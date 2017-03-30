@@ -1,0 +1,175 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Gebruikersbeheer</title>
+    <style type="text/css">
+        body {
+            background-image:url(Blue-Low-Poly-Design-Abstract-Background-Vector-Illustration.jpg);
+            background-size:cover;
+
+        }
+
+        /* containers */
+        #container {
+            width:1500px;
+            height:auto;
+            margin: 0px auto;
+        }
+        #content {
+            width:1100px;
+            height:500px;
+            margin-left:50px;
+            margin-right:50px;
+            background-color:white; 
+        }
+        /* divisies */
+        #contentheader {
+            width:1100px;
+            height:50px;
+            background-color:#FF9900;
+        }
+        #contentheader h1 {
+            color:white;
+            font-size:24px;
+            font-family:Arial, Helvetica, sans-serif;
+            padding-left:200px;
+            padding-right:150px;
+            float:left;
+        }
+        #header {
+            width:1200px;
+            height:150px;   
+        }
+        #imgheader {
+            width:197px;
+            height:150px;   
+            background-image:url(Logo.png);
+            background-size:cover;
+            float:left;
+        }
+        /* classes/aanpassingen */
+        .accountrechten {
+            color:white;
+            font-size:36px;
+            font-family:Arial, Helvetica, sans-serif;
+            font-weight:bold;
+            font-style:italic;
+            padding-left:120px;
+            margin-top:75px;
+            margin-left:0px;
+            margin-bottom:0px;
+            float:left;
+            text-decoration:none;    
+        }
+        .topsearchbar {
+            width:365px;
+            float:right;
+            margin-top:83px;
+            float:right;
+            margin-left:75px;  
+        }
+        #logoutbutton {
+            width:96px;
+            height:29px;
+            border-radius:8px;
+            background-color:#FF9900;
+            float:right;
+            margin-right:50px;
+            margin-top:50px;
+            text-align:center;
+
+        }
+        #logoutbutton a {
+            color:white;
+            text-decoration:none;
+            padding-top:5px;
+        }
+        #addusers {
+            width:1100px;
+            height:500px;
+            margin-top:100px; 
+        }
+        #addusers h1 {
+            color:white;
+            font-family:Arial, Helvetica, sans-serif;
+            margin-left:50px;
+            font-size:24px;     
+        }
+        table {
+            margin-left:50px;
+            color:white;
+            font-family:Arial, Helvetica, sans-serif;      
+        }
+        .ondersubmit{
+            width:140px;
+            height:40px;
+            background-color:#ff9900;
+            border-radius:25px;
+            color:white;
+            border: none;
+        }
+        .zoeksubmit {
+            position: absolute;
+            width: 20px;
+            height: 20px;
+        }
+    </style>
+</head>
+<!-- De structuur
+*************
+*************
+*************-->
+<body>
+    <div id="container">
+       <div id="header">
+           <div id="imgheader">
+           </div>
+           <a href="#" class="accountrechten">Accountrechten</a>
+           <div id="logoutbutton">
+            <a href="#">Uitloggen</a>
+        </div>
+
+        <form>
+            <span class="topsearchbar"><input type="text" name="topsearch" size="40"/> 
+            <input type="image" class="zoeksubmit" src="search-logo.png" border="0" alt="submit"/>
+
+        </form>
+    </div>
+    
+    <div id="content">
+    	<div id="contentheader">
+            <h1>Gebruikers</h1>
+        </div>
+    </div>
+    <div id="addusers">
+        <h1>Voeg gebruiker toe:</h1>
+        <br>
+        <form action="#">
+            <table>
+                <tr>
+                   <td>Gebruikersnaam:</td>
+                   <td><input type="text" name="gebruikersnaam"> </td> 
+               </tr>
+               <tr>
+                   <td>Wachtwoord:</td>
+                   <td><input type="password" name="password"> </td>
+               </tr>
+               <tr>
+                   <td>E-mail:</td>
+                   <td><input type="text" name="email"> </td>
+               </tr>
+               <tr> 
+                   <td>Rol:</td>
+                   <td><input type="text" name="rol"></td>
+               </tr>
+
+               <tr>
+                   <td><input type="submit" name="versturen" value="Versturen" class="ondersubmit"></td>
+               </tr>
+           </table>
+       </form>
+   </div>
+</div>
+</body>
+</html>
