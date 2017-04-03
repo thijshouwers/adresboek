@@ -1,13 +1,4 @@
 <?php
-if(!isset($_COOKIE['username']))
-{
-    header("Location: index.php");
-    die();
-}
-else
-{
-    $username = base64_decode($_COOKIE['username']);
-}
 $host = "mysql.hostinger.nl";
 $database = "u361730451_adres";
 $gebruiker = "u361730451_thijs";
@@ -15,26 +6,42 @@ $wachtwoord = "iEOrBUYGW3lM";
 
 $connection = mysqli_connect($host, $gebruiker, $wachtwoord, $database);
 
+// sorteerfunctie
+if ($_POST['sorteren'] {
+            switch ( sorteer ) 
+            {
+                case 'voornaam':                    
+                    $query = "SELECT * FROM adressen ORDER BY voornaam ASC";
+                    break;
+                
+                case 'achternaam':
+                    $query = "SELECT * FROM adressen ORDER BY achternaam ASC";
+                    break;
+
+                case 'plaats':
+                    $query = "SELECT * FROM adressen ORDER BY plaats ASC";
+                    break;
+
+                case 'adres':
+                    $query = "SELECT * FROM adressen ORDER BY adres ASC";
+                    break;
+
+                case 'postcode':
+                    $query = "SELECT * FROM adressen ORDER BY postcode ASC";
+                    break;
+            }  
+            else          
+            {
+                $query = "SELECT * FROM `adressen`";
+            }    
+}
+
 $query = "SELECT * FROM `adressen`";
 $result =  mysqli_query($connection, $query);
 
 if(mysqli_connect_errno())
 {
     die("Connection failed: " . mysqli_connect_error() . " (" . mysqli_connect_errno() . ")");
-}
-
-$queryuser = "SELECT * FROM `gebruikers` WHERE `Gebruikersnaam` = '$username'";
-$resultuser = mysqli_query($connection, $queryuser);
-$userinfo = mysqli_fetch_assoc($resultuser);
-
-//check if user is admin
-if($userinfo['functie'] == "Admin")
-{
-    $isadmin = true;
-}
-else
-{
-    $isadmin = false;
 }
 ?>
 <!doctype html>
@@ -49,7 +56,7 @@ else
         /* CSS Document*/
 
         body {
-            background-image: url(Achtergrond.jpg);
+            background-image: url(../../../../../../xamppp/htdocs/PHP/Periode%203/Achtergrond.jpg);
             background-size: cover;
         }
 
@@ -67,7 +74,7 @@ else
         #logo {
             width: 174px;
             height: 112px;
-            background-image: url(logo.png);
+            background-image: url(../../../../../../xamppp/htdocs/PHP/Periode%203/logo.png);
             background-size: cover;
             background-repeat: no-repeat;
             float: left;
@@ -176,9 +183,10 @@ else
 <body>
     <div id="container">
         <div id="header">
-            <div id="logo"></div>
+            <div id="logo"></div>            
             <div id="droplist">
-                <select>
+            <form action="" method="post">
+                <select name="sorteer">
                     <option value="sorteerop">Sorteer op:</option>
                     <option value="voornaam">Voornaam</option>
                     <option value="achternaam">Achternaam</option>
@@ -186,32 +194,17 @@ else
                     <option value="adres">Adres</option>
                     <option value="postcode">Postcode</option>
                 </select>
+                <input type="submit" value="sorteren" name="sorteren">
+            </form>
             </div>
+            
             <div id="rechten">
                 <p>Adresboek</p>
             </div>
-            <?php
-            if($isadmin)
-            {
-                ?>
-                <form action="gebruikersbeheer.php">
-                    <input type="submit" name="beheer" class="beheer" value="Beheer">
-                </form>
-                <?php
-            }
-            ?>
-            <a href="?logout"><button type="button">Uitloggen</button></a>
-            <?php 
-            if(isset($_GET['logout'])) {
-
-                unset($_COOKIE['username']);
-
-                header('Location:index.php');
-
-                exit;
-
-            }
-            ?>
+            <form action="../../../../../../xamppp/htdocs/PHP/Periode 3/gebruikersbeheer.php">
+                <input type="submit" name="beheer" class="beheer" value="Beheer">
+            </form>
+            <button type="button">Uitloggen</button>
             <form>
                 <input type="text" name="zoek" placeholder="zoeken" class="zoek"> </form>
             </div>
